@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Anhelando ver lo que quería ser</title>
+    <style>
+        body {
+            background-color: #F5E8DC; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #504033;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 { font-size: 1.5rem; margin-bottom: 20px; }
+        
+        .mensaje {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .corazon-img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .contador-container {
+            border-top: 2px solid #504033;
+            padding-top: 15px;
+        }
+
+        .contador-titulo {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        #reloj {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .unidades {
+            color: #888;
+            font-weight: normal;
+            font-size: 0.8rem;
+        }
+
+  #btn-musica {
+      background-color: #d1b8a1;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 25px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      transition: 0.3s;
+        }
+
+ #btn-musica:hover { background-color: #b59a82; transform: scale(1.05); }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Un pequeño rincón para recordarte:</h1>        
+        <div style="font-size: 80px;"><img src="C:\Users\Sammg\Downloads\Prototipo\ARBCOR.png"></div>
+
+        <div class="mensaje">
+            <p>"Ella nunca fue mía, solo mi ilusión favorita. Incluso las ilusiones se volvían reales cuando ella sonreía"</p>
+            <p><strong>— ¡La duda pesa, pero, la verdad libera!</strong></p>
+        </div>
+
+        <div class="contador-container">
+            <p class="contador-titulo">Desde el día en que te volviste alguien especial...</p>
+            <div id="reloj">Cargando tiempo...</div>
+        </div>
+
+<button id="btn-musica" onclick="reproducir()">🎵 Clic aquí </button>
+<audio id="musica">
+    <source src="IWannaBeYours.mp3" type="audio/mpeg">
+</audio>
+       </div>
+    <script>
+const fechaInicio = new Date(2023, 1, 14, 0, 0, 0); 
+
+        function actualizarContador() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicio;
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('reloj').innerHTML = 
+                `${dias} <span class="unidades">días</span> ` +
+                `${horas} <span class="unidades">horas</span> ` +
+                `${minutos} <span class="unidades">minutos</span> ` +
+                `${segundos} <span class="unidades">segundos</span>`;
+        }
+
+        setInterval(actualizarContador, 1000);
+        actualizarContador(); 
+
+       function reproducir() {
+    const audio = document.getElementById('musica');
+    audio.play();
+
+    const btn = document.getElementById('btn-musica');
+    btn.innerHTML = "🎶 Sonando: I Wanna Be Yours";
+    btn.style.background = "#b5a496";
+}    
+   </script>
+</body>
+</html>
